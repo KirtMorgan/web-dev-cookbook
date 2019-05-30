@@ -6,7 +6,8 @@
   },
   "builders":[{
     "type": "amazon-ebs",
-    "subnet_id": "subnet-0f5808733370665a4",
+    "subnet_id": "subnet-0e9b6138ff1ce18f2",
+    "ssh_keypair_name": "DevOpsStudents",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "ssh_agent_auth": true,
@@ -14,7 +15,7 @@
     "source_ami_filter":{
       "filters":{
         "virtualization-type": "hvm",
-        "name": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*",
+        "name": "ubuntu/images/hvm-ssd/*ubuntu-xenial-16.04-amd64-server-*",
         "root-device-type": "ebs"
       },
       "owners": ["099720109477"],
@@ -22,7 +23,7 @@
     },
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "example-node-app-kirt-{{timestamp}}"
+    "ami_name": "example-node-app-kirt"
   }],
   "provisioners":[{
     "type": "chef-solo",
