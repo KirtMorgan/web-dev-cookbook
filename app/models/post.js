@@ -1,8 +1,18 @@
 var mongoose = require('mongoose');
+var PostSchema = mongoose.Schema;
 
-var PostSchema = new mongoose.Schema({
-  title: String,
-  body: String
+// parse json
+var data = require('./postdata.json');
+
+// create a schema
+var postpagedata = PostSchema(data);
+
+// compile the model
+var post = mongoose.model('Post', postpagedata);
+
+var post1 = new post({
+  title: 'The Spartan War',
+  body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 });
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model('post', postpagedata);
